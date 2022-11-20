@@ -88,4 +88,6 @@ Clock.html
   </body>
 </html>
 ```
+Result
+!['Hasil'](https://i.imgur.com/kKNiqkL.png)
 
