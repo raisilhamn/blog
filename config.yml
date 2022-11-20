@@ -66,6 +66,8 @@ params:
         url: posts
       - name: Tags
         url: tags
+      - name: Project
+        url: "https://github.com/raisilhamn"
 
   # home-info mode
   homeInfoParams:
