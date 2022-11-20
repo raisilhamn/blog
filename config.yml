@@ -55,7 +55,7 @@ params:
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: Rais Ilham
+    title: Rais Ilham Nustara
     subtitle: "Information System Student"
     imageUrl: "https://avatars.githubusercontent.com/u/37736501?v=4"
     imageWidth: 120
@@ -79,6 +79,8 @@ params:
       url: "https://twitter.com/Raisilhamjpg"
     - name: github
       url: "https://github.com/raisilhamn"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/raisilhamn/" 
     - name: telegram
       url: "https://t.me/rais_ilham"
 
