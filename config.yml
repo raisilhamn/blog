@@ -1,7 +1,7 @@
 baseURL: "https://raisilham.com/"
 title: Raisilham_blog
 paginate: 5
-theme: hugo-PaperMod
+theme: github.com/adityatelange/hugo-PaperMod
 
 enableRobotsTXT: true
 buildDrafts: false
