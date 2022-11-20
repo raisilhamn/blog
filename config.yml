@@ -1,4 +1,4 @@
-baseURL: "https://raisilham.netlify.app/"
+baseURL: "https://raisilham.com"
 title: Raisilham_blog
 paginate: 5
 theme: PaperMod
@@ -16,8 +16,8 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: Raisilham_blog
-  description: "ExampleSite description"
+  title: Rais Blog
+  description: "Rais Ilham Nustara"
   keywords: [Blog, Portfolio]
   author: Me
   # author: ["Me", "You"] # multiple authors
