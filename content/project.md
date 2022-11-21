@@ -1,7 +1,7 @@
 ---
 title: "Project"
 date: 2022-11-21T11:29:36+07:00
-draft: true
+draft: false
 
 # tags: ["Life"]
 author: "Rais Ilham"
