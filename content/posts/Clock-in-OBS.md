@@ -1,7 +1,7 @@
 ---
 title: "Clock in OBS"
 date: 2022-11-20T20:18:15+07:00
-draft: true
+draft: false
 
 tags: ["Utility"]
 author: "Me"
