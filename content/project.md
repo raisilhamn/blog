@@ -32,6 +32,10 @@ Link : https://m-edukasi.kemdikbud.go.id/medukasi/?m1=lomba&produksi=2018&kd=ME1
 Link : https://m-edukasi.kemdikbud.go.id/medukasi/?m1=vlab&produksi=2021&kd=ME21VLAB10
 
 ### [Research] Analisis Sentimen Masyarakat terhadap Polisi Menggunakan Metode  Lexicon Based dan Support Vector Machine (Studi Kasus : Tragedi Kanjuruhan dan Kasus Ferdy Sambo)
-Link : 
+Link : https://gemastik.id/
 
+### [Web] Redesign Web Megister Matemarika, Fakultas Sains dan Teknologi, Universitas Airlangga
+Link : https://m-math.fst.unair.ac.id/
 
+### [Web] Redesign Web Fakultas Sains dan Teknologi, Universitas Airlangga
+Link : http://fst.unair.ac.id/
