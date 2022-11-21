@@ -67,7 +67,7 @@ params:
       - name: Tags
         url: tags
       - name: Project
-        url: /posts/project/
+        url: /project
 
   # home-info mode
   homeInfoParams:
