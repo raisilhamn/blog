@@ -1,7 +1,7 @@
 baseURL: "https://raisilham.com"
 title: tempat nulis rais
 paginate: 5
-theme: hugo-PaperModX
+theme: PaperModX
 
 enableRobotsTXT: true
 buildDrafts: false
