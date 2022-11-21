@@ -4,7 +4,7 @@ date: 2022-11-21T10:55:47+07:00
 draft: false
 
 tags: ["Twitter"]
-author: "Me"
+author: "Rais Ilham"
 # author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false

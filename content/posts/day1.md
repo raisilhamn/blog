@@ -4,7 +4,7 @@ date: 2022-11-20T16:11:01+07:00
 # weight: 1
 # aliases: ["/first"]
 tags: ["ML","Python"]
-author: "Me"
+author: "Rais Ilham"
 # author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false
