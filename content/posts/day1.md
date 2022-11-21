@@ -39,7 +39,7 @@ cover:
 - step of capturing patterns from data is called **fitting** or **training** the model.
 - The data used to **fit** the model is called the **training data**.
 - After the model has been fit, you can apply it to new data to **predict**.
-![example](http://i.imgur.com/R3ywQsR.png)
+<!-- ![example](http://i.imgur.com/R3ywQsR.png) -->
 - The point at the bottom where we make a prediction is called a **leaf**.
 
 ## Basic Data Exploration
