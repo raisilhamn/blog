@@ -28,20 +28,6 @@ cover:
 
 ---
 
-# Day 1
-
-- [Day 1](#day-1)
-  - [How Models Work](#how-models-work)
-    - [keypoints](#keypoints)
-  - [Basic Data Exploration](#basic-data-exploration)
-  - [Your First Machine Learning Model](#your-first-machine-learning-model)
-    - [Selecting The Prediction Target](#selecting-the-prediction-target)
-    - [Choosing "Features"](#choosing-features)
-    - [Building Your Model](#building-your-model)
-  - [Model Validation](#model-validation)
-    - [What is Model Validation ?](#what-is-model-validation-)
-    - [Latihan](#latihan)
-      - [The Importance of Data Splitting](#the-importance-of-data-splitting)
 
 ## How Models Work
 

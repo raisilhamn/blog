@@ -14,7 +14,7 @@ comments: false
 description: "How to Add Clock in OBS."
 disableShare: false
 # disableHLJS: false
-hideSummary: false
+hideSummary: true
 searchHidden: true
 ShowReadingTime: true
 ShowBreadCrumbs: true

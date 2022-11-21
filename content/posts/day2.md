@@ -26,18 +26,7 @@ cover:
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
 ---
-# Day 2
-
-- [Day 2](#day-2)
-  - [Underfitting and Overfitting](#underfitting-and-overfitting)
-    - [Experimenting With Different Models](#experimenting-with-different-models)
-    - [Example](#example)
-    - [Kesimpulan](#kesimpulan)
-  - [Random Forests](#random-forests)
-    - [Introduction](#introduction)
-    - [Example random forests](#example-random-forests)
-
-## Underfitting and Overfitting
+### Underfitting and Overfitting
 
 > Fine-tune your model for better performance.
 
