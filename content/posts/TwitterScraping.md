@@ -12,7 +12,7 @@ hidemeta: false
 comments: false
 description: "Twitter Scraping Without using API"
 disableShare: false
-disableHLJS: false
+# disableHLJS: false
 hideSummary: false
 searchHidden: true
 ShowReadingTime: true

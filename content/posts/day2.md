@@ -11,8 +11,8 @@ TocOpen: false
 draft: false
 hidemeta: false
 comments: false
-description: "Desc Text."
-disableHLJS: true # to disable highlightjs
+description: "Note on ML"
+# disableHLJS: true # to disable highlightjs
 disableShare: false
 hideSummary: false
 searchHidden: true

@@ -1,7 +1,7 @@
 baseURL: "https://raisilham.com"
 title: tempat nulis rais
 paginate: 5
-theme: PaperModX
+theme: PaperMod
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -38,8 +38,10 @@ params:
   showtoc: false
   tocopen: false
 
+
+
   assets:
-    # disableHLJS: true # to disable highlight.js
+    disableHLJS: true # to disable highlight.js
     disableFingerprinting: true
     favicon: "https://avatars.githubusercontent.com/u/37736501?v=4"
     # favicon16x16: "<link / abs url>"
@@ -78,12 +80,9 @@ params:
     - name: github
       url: "https://github.com/raisilhamn"
     - name: linkedin
-      url: "https://www.linkedin.com/in/raisilhamn/" 
+      url: "https://www.linkedin.com/in/raisilhamn/"
     - name: telegram
       url: "https://t.me/rais_ilham"
-  
-
-
 
   cover:
     hidden: true # hide everywhere but not in structured data
@@ -123,10 +122,11 @@ menu:
         external: true
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
-# markup:
-#     highlight:
-#         # anchorLineNos: true
-#         codeFences: true
-#         guessSyntax: true
-#         lineNos: true
-#         style: monokai
+markup:
+    highlight:
+        # anchorLineNos: true
+        pygmentsUseClasses: true
+        codeFences: true
+        guessSyntax: true
+        lineNos: true
+        style: dracula
