@@ -75,14 +75,13 @@ params:
     Content: Welcome to my blog
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/Raisilhamjpg"
     - name: github
       url: "https://github.com/raisilhamn"
     - name: linkedin
       url: "https://www.linkedin.com/in/raisilhamn/" 
     - name: telegram
       url: "https://t.me/rais_ilham"
+  
 
 
 
