@@ -118,8 +118,8 @@ menu:
       name: github
       url: https://github.com/raisilhamn
       weight: 30
-      params:
-        external: true
+      # params:
+        # external: true
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 markup:
