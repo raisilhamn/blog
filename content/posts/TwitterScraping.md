@@ -47,7 +47,6 @@ import snscrape.modules.twitter as sntwitter
 # Created a list to append all tweet attributes(data)
 attributes_container = []
 Q = '(sambo AND polisi) OR (joshua AND polisi)'
-Q2 = 'polisi AND kanjuruhan'
 
 # Using TwitterSearchScraper to scrape data and append tweets to list
 for i, tweet in enumerate(sntwitter.TwitterSearchScraper(Q +
@@ -59,10 +58,13 @@ for i, tweet in enumerate(sntwitter.TwitterSearchScraper(Q +
 # Creating a dataframe from the tweets list above
 tweets_df = pd.DataFrame(attributes_container, columns=[
                          "Date Created", "Number of Likes", "Tweets"])
-tweets_df2 = pd.DataFrame(attributes_container, columns=[
-                          "Date Created", "Number of Likes", "Tweets"])
-
+# save to csv format
+tweets_df.to_csv('10k_sambo.csv')
 ```
 - Enter your keyword in "Q"
 - Enter the date of the tweet in "since: " and "until: "
 - Filter with "-filter "
+- "10000" is number of twitter to scrape
+
+### Result
+![alt](https://i.imgur.com/EnCE4Sq.png#center)
