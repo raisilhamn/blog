@@ -1,5 +1,5 @@
 ---
-title: "Clock in OBS"
+title: "Show date/time in OBS Studio whitout 3rd party software"
 date: 2022-11-18T20:18:15+07:00
 draft: false
 
@@ -11,10 +11,10 @@ TocOpen: false
 draft: false
 hidemeta: false
 comments: false
-description: "How to Add Clock in OBS."
+description: "Show date/time in OBS Studio whitout 3rd party software"
 disableShare: false
 # disableHLJS: false
-hideSummary: true
+hideSummary: false
 searchHidden: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
@@ -26,10 +26,11 @@ cover:
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
 ---
+# How to show date/time in corner of OBS Studio
+In this tutorial, we'll show you how to display the date and time in OBS Studio without using any third-party software. This can be useful for streamers who want to show the current date and time on their streams, or for anyone who wants to add a digital clock to their videos.
 
-Import lewat browser lalu masukan file. 
-
-Clock.html
+## Step 1 : Create HTML file named clock.html 
+fill 'clock.html' with this code bellow. 
 
 ```html 
 <!DOCTYPE html>

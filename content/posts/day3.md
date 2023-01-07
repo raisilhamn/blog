@@ -1,5 +1,5 @@
 ---
-title: "Day 2 (30 Days Of ML)"
+title: "Day 3 (30 Days Of ML)"
 date: 2022-11-21T16:18:01+07:00
 # weight: 1
 # aliases: ["/first"]
