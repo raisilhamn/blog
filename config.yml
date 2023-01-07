@@ -1,5 +1,5 @@
 baseURL: "https://raisilham.com"
-title: Otw Bikin Blog
+title: Kusa Blog
 paginate: 5
 theme: PaperMod
 
@@ -18,7 +18,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: blognya rais ilham
   description: "Rais Ilham Nustara"
-  keywords: [Blog, Portfolio]
+  keywords: [Blog, Portfolio, rais ilham, rais]
   author: Me
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
@@ -42,8 +42,8 @@ params:
 
 
   assets:
-    disableHLJS: true # to disable highlight.js
-    disableFingerprinting: true
+    disableHLJS: false # to disable highlight.js
+    disableFingerprinting: false
     favicon: "https://avatars.githubusercontent.com/u/37736501?v=4"
     # favicon16x16: "<link / abs url>"
     # favicon32x32: "<link / abs url>"
@@ -51,8 +51,8 @@ params:
     # safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Tempat Nulis Rais"
-    # icon: /apple-touch-icon.png
+    text: "草 Blog"
+    # icon: "cafe.svg"
     # iconHeight: 35
 
   # profile-mode
