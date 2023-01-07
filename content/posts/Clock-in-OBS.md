@@ -1,6 +1,6 @@
 ---
 title: "Clock in OBS"
-date: 2022-11-20T20:18:15+07:00
+date: 2022-11-18T20:18:15+07:00
 draft: false
 
 tags: ["Utility"]

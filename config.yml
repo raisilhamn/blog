@@ -83,8 +83,6 @@ params:
       url: "https://www.linkedin.com/in/raisilhamn/"
     - name: telegram
       url: "https://t.me/rais_ilham"
-    - name: matrix
-      url: "https://t.me/rais_ilham"
 
   cover:
     hidden: true # hide everywhere but not in structured data

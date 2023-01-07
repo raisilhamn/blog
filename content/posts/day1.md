@@ -1,6 +1,6 @@
 ---
 title: "Day 1 (30 Days Of ML)"
-date: 2022-11-20T16:11:01+07:00
+date: 2022-11-19T16:11:01+07:00
 # weight: 1
 # aliases: ["/first"]
 tags: ["ML","Python"]

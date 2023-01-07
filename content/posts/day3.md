@@ -1,11 +1,9 @@
 ---
-title: "Rias Ilham Nustara CV"
-date: 2022-11-22T17:37:37+07:00
-draft: false
-
+title: "Day 2 (30 Days Of ML)"
+date: 2022-11-21T16:18:01+07:00
 # weight: 1
 # aliases: ["/first"]
-# tags: ["ML","Python"]
+tags: ["ML","Python"]
 author: "Rais Ilham"
 # author: ["Me", "You"] # multiple authors
 showToc: true
@@ -14,8 +12,8 @@ draft: false
 hidemeta: false
 comments: false
 description: "Note on ML"
+# disableHLJS: true # to disable highlightjs
 disableShare: false
-# disableHLJS: false
 hideSummary: false
 searchHidden: true
 ShowReadingTime: true
@@ -27,7 +25,4 @@ cover:
     caption: "<text>" # display caption under cover
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
-
 ---
-
-CV Link = 
