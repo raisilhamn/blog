@@ -1,5 +1,5 @@
 baseURL: "https://raisilham.com"
-title: tempat nulis rais
+title: Otw Bikin Blog
 paginate: 5
 theme: PaperMod
 
@@ -16,7 +16,7 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: Rais Blog
+  title: blognya rais ilham
   description: "Rais Ilham Nustara"
   keywords: [Blog, Portfolio]
   author: Me
@@ -35,8 +35,9 @@ params:
   comments: false
   hidemeta: false
   hideSummary: false
-  showtoc: false
+  showtoc: true
   tocopen: false
+  hideFooter: false
 
 
 
