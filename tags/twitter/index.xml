@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Twitter on Kusa Blog</title>
-    <link>https://raisilham.com/tags/twitter/</link>
+    <link>https://raisilhamn.github.io/blog/tags/twitter/</link>
     <description>Recent content in Twitter on Kusa Blog</description>
     <image>
-      <url>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Nov 2022 10:55:47 +0700</lastBuildDate><atom:link href="https://raisilham.com/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Nov 2022 10:55:47 +0700</lastBuildDate><atom:link href="https://raisilhamn.github.io/blog/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Twitter Scraping With Snscrape</title>
-      <link>https://raisilham.com/posts/twitterscraping/</link>
+      <link>https://raisilhamn.github.io/blog/posts/twitterscraping/</link>
       <pubDate>Mon, 21 Nov 2022 10:55:47 +0700</pubDate>
       
-      <guid>https://raisilham.com/posts/twitterscraping/</guid>
+      <guid>https://raisilhamn.github.io/blog/posts/twitterscraping/</guid>
       <description>Twitter Scraping Without using API</description>
     </item>
     
