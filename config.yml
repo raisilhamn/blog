@@ -1,5 +1,5 @@
-baseURL: "https://raisilham.com"
-# baseURL: "https://raisilhamn.github.io/blog/"
+# baseURL: "https://raisilham.com"
+baseURL: "https://raisilhamn.github.io/blog/"
 title: Kusa Blog
 paginate: 5
 theme: PaperMod
