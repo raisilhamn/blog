@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Kusa Blog</title>
-    <link>https://blog.raisilham.com/tags/</link>
+    <link>https://raisilham.com/tags/</link>
     <description>Recent content in Tags on Kusa Blog</description>
     <image>
-      <url>https://blog.raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Nov 2022 16:18:01 +0700</lastBuildDate><atom:link href="https://blog.raisilham.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Nov 2022 16:18:01 +0700</lastBuildDate><atom:link href="https://raisilham.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ML</title>
-      <link>https://blog.raisilham.com/tags/ml/</link>
+      <link>https://raisilham.com/tags/ml/</link>
       <pubDate>Mon, 21 Nov 2022 16:18:01 +0700</pubDate>
       
-      <guid>https://blog.raisilham.com/tags/ml/</guid>
+      <guid>https://raisilham.com/tags/ml/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://blog.raisilham.com/tags/python/</link>
+      <link>https://raisilham.com/tags/python/</link>
       <pubDate>Mon, 21 Nov 2022 16:18:01 +0700</pubDate>
       
-      <guid>https://blog.raisilham.com/tags/python/</guid>
+      <guid>https://raisilham.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Twitter</title>
-      <link>https://blog.raisilham.com/tags/twitter/</link>
+      <link>https://raisilham.com/tags/twitter/</link>
       <pubDate>Mon, 21 Nov 2022 10:55:47 +0700</pubDate>
       
-      <guid>https://blog.raisilham.com/tags/twitter/</guid>
+      <guid>https://raisilham.com/tags/twitter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Utility</title>
-      <link>https://blog.raisilham.com/tags/utility/</link>
+      <link>https://raisilham.com/tags/utility/</link>
       <pubDate>Fri, 18 Nov 2022 20:18:15 +0700</pubDate>
       
-      <guid>https://blog.raisilham.com/tags/utility/</guid>
+      <guid>https://raisilham.com/tags/utility/</guid>
       <description></description>
     </item>
     
