@@ -1,5 +1,5 @@
-# baseURL: "https://raisilham.com"
-baseURL: "https://raisilhamn.github.io/blog/"
+baseURL: "https://blog.raisilham.com"
+# baseURL: "https://raisilhamn.github.io/blog/"
 title: Kusa Blog
 paginate: 5
 theme: PaperMod
@@ -58,7 +58,7 @@ params:
 
   # profile-mode
   profileMode:
-    enabled: false # needs to be explicitly set
+    enabled: true # needs to be explicitly set
     title: Rais Ilham Nustara
     subtitle: "Information System Student"
     imageUrl: "https://avatars.githubusercontent.com/u/37736501?v=4"
