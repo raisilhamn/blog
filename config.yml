@@ -58,7 +58,7 @@ params:
 
   # profile-mode
   profileMode:
-    enabled: true # needs to be explicitly set
+    enabled: false # needs to be explicitly set
     title: Rais Ilham Nustara
     subtitle: "Information System Student"
     imageUrl: "https://avatars.githubusercontent.com/u/37736501?v=4"
