@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Utility on Kusa Blog</title>
-    <link>https://raisilhamn.github.io/blog/tags/utility/</link>
+    <link>https://blog.raisilham.com/tags/utility/</link>
     <description>Recent content in Utility on Kusa Blog</description>
     <image>
-      <url>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 18 Nov 2022 20:18:15 +0700</lastBuildDate><atom:link href="https://raisilhamn.github.io/blog/tags/utility/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Nov 2022 20:18:15 +0700</lastBuildDate><atom:link href="https://blog.raisilham.com/tags/utility/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Show date/time in OBS Studio whitout 3rd party software</title>
-      <link>https://raisilhamn.github.io/blog/posts/clock-in-obs/</link>
+      <link>https://blog.raisilham.com/posts/clock-in-obs/</link>
       <pubDate>Fri, 18 Nov 2022 20:18:15 +0700</pubDate>
       
-      <guid>https://raisilhamn.github.io/blog/posts/clock-in-obs/</guid>
+      <guid>https://blog.raisilham.com/posts/clock-in-obs/</guid>
       <description>Show date/time in OBS Studio whitout 3rd party software</description>
     </item>
     
