@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Kusa Blog</title>
-    <link>https://raisilhamn.github.io/blog/posts/</link>
+    <link>https://raisilham.com/posts/</link>
     <description>Recent content in Posts on Kusa Blog</description>
     <image>
-      <url>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Nov 2022 16:18:01 +0700</lastBuildDate><atom:link href="https://raisilhamn.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Nov 2022 16:18:01 +0700</lastBuildDate><atom:link href="https://raisilham.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Day 3 (30 Days Of ML)</title>
-      <link>https://raisilhamn.github.io/blog/posts/day3/</link>
+      <link>https://raisilham.com/posts/day3/</link>
       <pubDate>Mon, 21 Nov 2022 16:18:01 +0700</pubDate>
       
-      <guid>https://raisilhamn.github.io/blog/posts/day3/</guid>
+      <guid>https://raisilham.com/posts/day3/</guid>
       <description>Note on ML</description>
     </item>
     
     <item>
       <title>Twitter Scraping With Snscrape</title>
-      <link>https://raisilhamn.github.io/blog/posts/twitterscraping/</link>
+      <link>https://raisilham.com/posts/twitterscraping/</link>
       <pubDate>Mon, 21 Nov 2022 10:55:47 +0700</pubDate>
       
-      <guid>https://raisilhamn.github.io/blog/posts/twitterscraping/</guid>
+      <guid>https://raisilham.com/posts/twitterscraping/</guid>
       <description>Twitter Scraping Without using API</description>
     </item>
     
     <item>
       <title>Day 2 (30 Days Of ML)</title>
-      <link>https://raisilhamn.github.io/blog/posts/day2/</link>
+      <link>https://raisilham.com/posts/day2/</link>
       <pubDate>Sun, 20 Nov 2022 16:18:01 +0700</pubDate>
       
-      <guid>https://raisilhamn.github.io/blog/posts/day2/</guid>
+      <guid>https://raisilham.com/posts/day2/</guid>
       <description>Note on ML</description>
     </item>
     
     <item>
       <title>Day 1 (30 Days Of ML)</title>
-      <link>https://raisilhamn.github.io/blog/posts/day1/</link>
+      <link>https://raisilham.com/posts/day1/</link>
       <pubDate>Sat, 19 Nov 2022 16:11:01 +0700</pubDate>
       
-      <guid>https://raisilhamn.github.io/blog/posts/day1/</guid>
+      <guid>https://raisilham.com/posts/day1/</guid>
       <description>Note on ML</description>
     </item>
     
     <item>
       <title>Show date/time in OBS Studio whitout 3rd party software</title>
-      <link>https://raisilhamn.github.io/blog/posts/clock-in-obs/</link>
+      <link>https://raisilham.com/posts/clock-in-obs/</link>
       <pubDate>Fri, 18 Nov 2022 20:18:15 +0700</pubDate>
       
-      <guid>https://raisilhamn.github.io/blog/posts/clock-in-obs/</guid>
+      <guid>https://raisilham.com/posts/clock-in-obs/</guid>
       <description>Show date/time in OBS Studio whitout 3rd party software</description>
     </item>
     
