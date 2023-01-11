@@ -1,0 +1,346 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Day 2 (30 Days Of ML) | Kusa Blog</title>
+<meta name=keywords content="ML,Python">
+<meta name=description content="Note on ML">
+<meta name=author content="Rais Ilham">
+<link rel=canonical href=https://raisilham.com/posts/day2/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href="https://avatars.githubusercontent.com/u/37736501?v=4">
+<link rel=icon type=image/png sizes=16x16 href=https://raisilham.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://raisilham.com/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://raisilham.com/apple-touch-icon.png>
+<link rel=mask-icon href=https://raisilham.com/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript><meta property="og:title" content="Day 2 (30 Days Of ML)">
+<meta property="og:description" content="Note on ML">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://raisilham.com/posts/day2/">
+<meta property="og:image" content="https://raisilham.com/%3Cimage%20path/url%3E"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-11-20T16:18:01+07:00">
+<meta property="article:modified_time" content="2022-11-20T16:18:01+07:00"><meta property="og:site_name" content="blognya rais ilham">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://raisilham.com/%3Cimage%20path/url%3E">
+<meta name=twitter:title content="Day 2 (30 Days Of ML)">
+<meta name=twitter:description content="Note on ML">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://raisilham.com/posts/"},{"@type":"ListItem","position":3,"name":"Day 2 (30 Days Of ML)","item":"https://raisilham.com/posts/day2/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Day 2 (30 Days Of ML)","name":"Day 2 (30 Days Of ML)","description":"Note on ML","keywords":["ML","Python"],"articleBody":"Underfitting and Overfitting  Fine-tune your model for better performance.\n Experimenting With Different Models Now that you have a reliable way to measure model accuracy, you can experiment with alternative models and see which gives the best predictions. But what alternatives do you have for models?\nYou can see in scikit-learn’s documentation that the decision tree model has many options (more than you’ll want or need for a long time). The most important options determine the tree’s depth. Recall from the first lesson in this course that a tree’s depth is a measure of how many splits it makes before coming to a prediction. This is a relatively shallow tree In practice, it’s not uncommon for a tree to have 10 splits between the top level (all houses) and a leaf. As the tree gets deeper, the dataset gets sliced up into leaves with fewer houses. If a tree only had 1 split, it divides the data into 2 groups. If each group is split again, we would get 4 groups of houses. Splitting each of those again would create 8 groups. If we keep doubling the number of groups by adding more splits at each level, we’ll have $2^{10}$ groups of houses by the time we get to the 10th level. That’s 1024 leaves.\nWhen we divide the houses amongst many leaves, we also have fewer houses in each leaf. Leaves with very few houses will make predictions that are quite close to those homes' actual values, but they may make very unreliable predictions for new data (because each prediction is based on only a few houses).\nThis is a phenomenon called overfitting, where a model matches the training data almost perfectly, but does poorly in validation and other new data. On the flip side, if we make our tree very shallow, it doesn’t divide up the houses into very distinct groups.\nAt an extreme, if a tree divides houses into only 2 or 4, each group still has a wide variety of houses. Resulting predictions may be far off for most houses, even in the training data (and it will be bad in validation too for the same reason). When a model fails to capture important distinctions and patterns in the data, so it performs poorly even in training data, that is called underfitting.\nSince we care about accuracy on new data, which we estimate from our validation data, we want to find the sweet spot between underfitting and overfitting. Visually, we want the low point of the (red) validation curve in the figure below. Example There are a few alternatives for controlling the tree depth, and many allow for some routes through the tree to have greater depth than other routes.\nBut the max_leaf_nodes argument provides a very sensible way to control overfitting vs underfitting. The more leaves we allow the model to make, the more we move from the underfitting area in the above graph to the overfitting area.\nWe can use a utility function to help compare MAE scores from different values for max_leaf_nodes:\n1 2 3 4 5 6 7 8 9  from sklearn.metrics import mean_absolute_error from sklearn.tree import DecisionTreeRegressor def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y): model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0) model.fit(train_X, train_y) preds_val = model.predict(val_X) mae = mean_absolute_error(val_y, preds_val) return(mae)   The data is loaded into train_X, val_X, train_y and val_y using the code you’ve already seen (and which you’ve already written).\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  # Data Loading Code Runs At This Point import pandas as pd # Load data melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv' melbourne_data = pd.read_csv(melbourne_file_path) # Filter rows with missing values filtered_melbourne_data = melbourne_data.dropna(axis=0) # Choose target and features y = filtered_melbourne_data.Price melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 'YearBuilt', 'Lattitude', 'Longtitude'] X = filtered_melbourne_data[melbourne_features] from sklearn.model_selection import train_test_split # split data into training and validation data, for both features and target train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)   We can use a for-loop to compare the accuracy of models built with different values for max_leaf_nodes.\n1 2 3 4  # compare MAE with differing values of max_leaf_nodes for max_leaf_nodes in [5, 50, 500, 5000]: my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y) print(\"Max leaf nodes: %d\\t\\tMean Absolute Error: %d\" %(max_leaf_nodes, my_mae))   1 2 3 4 5  # output Max leaf nodes: 5 Mean Absolute Error: 347380 Max leaf nodes: 50 Mean Absolute Error: 258171 Max leaf nodes: 500 Mean Absolute Error: 243495 Max leaf nodes: 5000 Mean Absolute Error: 254983   Of the options listed, 500 is the optimal number of leaves.\nKesimpulan Here’s the takeaway: Models can suffer from either:\n Overfitting : capturing spurious patterns that won’t recur in the future, leading to less accurate predictions, Underfitting : failing to capture relevant patterns, again leading to less accurate predictions.  We use validation data, which isn’t used in model training, to measure a candidate model’s accuracy. This lets us try many candidate models and keep the best one.\nRandom Forests  Using a more sophisticated machine learning algorithm.\n Introduction Decision trees leave you with a difficult decision. A deep tree with lots of leaves will overfit because each prediction is coming from historical data from only the few houses at its leaf. But a shallow tree with few leaves will perform poorly because it fails to capture as many distinctions in the raw data.\nEven today’s most sophisticated modeling techniques face this tension between underfitting and overfitting. But, many models have clever ideas that can lead to better performance. We’ll look at the random forest as an example.\nThe random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree. It generally has much better predictive accuracy than a single decision tree and it works well with default parameters. If you keep modeling, you can learn more models with even better performance, but many of those are sensitive to getting the right parameters.\nExample random forests prepare following variable\n train_X val_X train_y val_y  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  import pandas as pd # Load data melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv' melbourne_data = pd.read_csv(melbourne_file_path) # Filter rows with missing values melbourne_data = melbourne_data.dropna(axis=0) # Choose target and features y = melbourne_data.Price melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 'YearBuilt', 'Lattitude', 'Longtitude'] X = melbourne_data[melbourne_features] from sklearn.model_selection import train_test_split # split data into training and validation data, for both features and target # The split is based on a random number generator. Supplying a numeric value to # the random_state argument guarantees we get the same split every time we # run this script. train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)   We build a random forest model similarly to how we built a decision tree in scikit-learn - this time using the RandomForestRegressor class instead of DecisionTreeRegressor.\n1 2 3 4 5 6 7  from sklearn.ensemble import RandomForestRegressor from sklearn.metrics import mean_absolute_error forest_model = RandomForestRegressor(random_state=1) forest_model.fit(train_X, train_y) melb_preds = forest_model.predict(val_X) print(mean_absolute_error(val_y, melb_preds))   ","wordCount":"1171","inLanguage":"en","image":"https://raisilham.com/%3Cimage%20path/url%3E","datePublished":"2022-11-20T16:18:01+07:00","dateModified":"2022-11-20T16:18:01+07:00","author":{"@type":"Person","name":"Rais Ilham"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://raisilham.com/posts/day2/"},"publisher":{"@type":"Organization","name":"Kusa Blog","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/37736501?v=4"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://raisilham.com accesskey=h title="草 Blog (Alt + H)">草 Blog</a>
+<div class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</div>
+</div>
+<ul id=menu>
+<li>
+<a href=https://raisilham.com/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+<li>
+<a href=https://github.com/raisilhamn title=github>
+<span>github</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://raisilham.com>Home</a>&nbsp;»&nbsp;<a href=https://raisilham.com/posts/>Posts</a></div>
+<h1 class=post-title>
+Day 2 (30 Days Of ML)
+</h1>
+<div class=post-description>
+Note on ML
+</div>
+<div class=post-meta><span title="2022-11-20 16:18:01 +0700 +0700">November 20, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Rais Ilham
+</div>
+</header> <div class=toc>
+<details>
+<summary accesskey=c title="(Alt + C)">
+<span class=details>Table of Contents</span>
+</summary>
+<div class=inner><ul><ul>
+<li>
+<a href=#underfitting-and-overfitting aria-label="Underfitting and Overfitting">Underfitting and Overfitting</a></li>
+<li>
+<a href=#experimenting-with-different-models aria-label="Experimenting With Different Models">Experimenting With Different Models</a></li>
+<li>
+<a href=#example aria-label=Example>Example</a></li>
+<li>
+<a href=#kesimpulan aria-label=Kesimpulan>Kesimpulan</a></li></ul>
+<li>
+<a href=#random-forests aria-label="Random Forests">Random Forests</a><ul>
+<li>
+<a href=#introduction aria-label=Introduction>Introduction</a></li>
+<li>
+<a href=#example-random-forests aria-label="Example random forests">Example random forests</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content><h3 id=underfitting-and-overfitting>Underfitting and Overfitting<a hidden class=anchor aria-hidden=true href=#underfitting-and-overfitting>#</a></h3>
+<blockquote>
+<p>Fine-tune your model for better performance.</p>
+</blockquote>
+<h3 id=experimenting-with-different-models>Experimenting With Different Models<a hidden class=anchor aria-hidden=true href=#experimenting-with-different-models>#</a></h3>
+<p>Now that you have a reliable way to measure model accuracy, you can experiment with alternative models and see which gives the best predictions. But what alternatives do you have for models?</p>
+<p>You can see in scikit-learn&rsquo;s <a href=https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html>documentation</a> that the decision tree model has many options (more than you&rsquo;ll want or need for a long time). The most important options determine the <strong>tree&rsquo;s depth</strong>. Recall from the first lesson in this course that a tree&rsquo;s depth is a measure of how many splits it makes before coming to a prediction. This is a relatively shallow tree
+</p>
+<p>In practice, it&rsquo;s not uncommon for a tree to have 10 splits between the top level (all houses) and a leaf. As the tree gets deeper, the dataset gets sliced up into leaves with fewer houses. If a tree only had 1 split, it divides the data into 2 groups. If each group is split again, we would get 4 groups of houses. Splitting each of those again would create 8 groups. If we keep doubling the number of groups by adding more splits at each level, we&rsquo;ll have $2^{10}$ groups of houses by the time we get to the 10th level. That&rsquo;s 1024 leaves.</p>
+<p>When we divide the houses amongst many leaves, we also have fewer houses in each leaf. <em>Leaves with very few houses will make predictions that are quite close to those homes' actual values</em>, but they may make very unreliable predictions for new data (because each prediction is based on only a few houses).</p>
+<p>This is a phenomenon called <strong><em>overfitting</em></strong>, where a model matches the training data almost perfectly, but does poorly in validation and other new data. On the flip side, if we make our tree very shallow, it doesn&rsquo;t divide up the houses into very distinct groups.</p>
+<p>At an extreme, if a tree divides houses into only 2 or 4, each group still has a wide variety of houses. Resulting predictions may be far off for most houses, even in the training data (and it will be bad in validation too for the same reason). When a model fails to capture important distinctions and patterns in the data, so it performs poorly even in training data, that is called <strong><em>underfitting</em></strong>.</p>
+<p>Since we care about accuracy on new data, which we estimate from our validation data, we want to find the sweet spot between underfitting and overfitting. Visually, we want the low point of the (red) validation curve in the figure below.
+</p>
+<h3 id=example>Example<a hidden class=anchor aria-hidden=true href=#example>#</a></h3>
+<p>There are a few alternatives for controlling the tree depth, and many allow for some routes through the tree to have greater depth than other routes.</p>
+<p>But the <strong><em>max_leaf_nodes</em></strong> argument provides a very sensible way to control overfitting vs underfitting. The more leaves we allow the model to make, the more we move from the underfitting area in the above graph to the overfitting area.</p>
+<p>We can use a utility function to help compare MAE scores from different values for <strong><em>max_leaf_nodes</em></strong>:</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#ff79c6>from</span> sklearn.metrics <span style=color:#ff79c6>import</span> mean_absolute_error
+<span style=color:#ff79c6>from</span> sklearn.tree <span style=color:#ff79c6>import</span> DecisionTreeRegressor
+
+<span style=color:#ff79c6>def</span> <span style=color:#50fa7b>get_mae</span>(max_leaf_nodes, train_X, val_X, train_y, val_y):
+    model <span style=color:#ff79c6>=</span> DecisionTreeRegressor(max_leaf_nodes<span style=color:#ff79c6>=</span>max_leaf_nodes, random_state<span style=color:#ff79c6>=</span><span style=color:#bd93f9>0</span>)
+    model<span style=color:#ff79c6>.</span>fit(train_X, train_y)
+    preds_val <span style=color:#ff79c6>=</span> model<span style=color:#ff79c6>.</span>predict(val_X)
+    mae <span style=color:#ff79c6>=</span> mean_absolute_error(val_y, preds_val)
+    <span style=color:#ff79c6>return</span>(mae)
+</code></pre></td></tr></table>
+</div>
+</div><p>The data is loaded into <strong>train_X</strong>, <strong>val_X</strong>, <strong>train_y</strong> and <strong>val_y</strong> using the code you&rsquo;ve already seen (and which you&rsquo;ve already written).</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#6272a4># Data Loading Code Runs At This Point</span>
+<span style=color:#ff79c6>import</span> pandas <span style=color:#ff79c6>as</span> pd
+    
+<span style=color:#6272a4># Load data</span>
+melbourne_file_path <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#39;../input/melbourne-housing-snapshot/melb_data.csv&#39;</span>
+melbourne_data <span style=color:#ff79c6>=</span> pd<span style=color:#ff79c6>.</span>read_csv(melbourne_file_path) 
+<span style=color:#6272a4># Filter rows with missing values</span>
+filtered_melbourne_data <span style=color:#ff79c6>=</span> melbourne_data<span style=color:#ff79c6>.</span>dropna(axis<span style=color:#ff79c6>=</span><span style=color:#bd93f9>0</span>)
+<span style=color:#6272a4># Choose target and features</span>
+y <span style=color:#ff79c6>=</span> filtered_melbourne_data<span style=color:#ff79c6>.</span>Price
+melbourne_features <span style=color:#ff79c6>=</span> [<span style=color:#f1fa8c>&#39;Rooms&#39;</span>, <span style=color:#f1fa8c>&#39;Bathroom&#39;</span>, <span style=color:#f1fa8c>&#39;Landsize&#39;</span>, <span style=color:#f1fa8c>&#39;BuildingArea&#39;</span>, 
+                        <span style=color:#f1fa8c>&#39;YearBuilt&#39;</span>, <span style=color:#f1fa8c>&#39;Lattitude&#39;</span>, <span style=color:#f1fa8c>&#39;Longtitude&#39;</span>]
+X <span style=color:#ff79c6>=</span> filtered_melbourne_data[melbourne_features]
+
+<span style=color:#ff79c6>from</span> sklearn.model_selection <span style=color:#ff79c6>import</span> train_test_split
+
+<span style=color:#6272a4># split data into training and validation data, for both features and target</span>
+train_X, val_X, train_y, val_y <span style=color:#ff79c6>=</span> train_test_split(X, y,random_state <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>)
+</code></pre></td></tr></table>
+</div>
+</div><p>We can use a for-loop to compare the accuracy of models built with different values for <strong><code>max_leaf_nodes</code></strong>.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#6272a4># compare MAE with differing values of max_leaf_nodes</span>
+<span style=color:#ff79c6>for</span> max_leaf_nodes <span style=color:#ff79c6>in</span> [<span style=color:#bd93f9>5</span>, <span style=color:#bd93f9>50</span>, <span style=color:#bd93f9>500</span>, <span style=color:#bd93f9>5000</span>]:
+    my_mae <span style=color:#ff79c6>=</span> get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
+    <span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;Max leaf nodes: </span><span style=color:#f1fa8c>%d</span><span style=color:#f1fa8c>  </span><span style=color:#f1fa8c>\t\t</span><span style=color:#f1fa8c> Mean Absolute Error:  </span><span style=color:#f1fa8c>%d</span><span style=color:#f1fa8c>&#34;</span> <span style=color:#ff79c6>%</span>(max_leaf_nodes, my_mae))
+</code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown><span style=font-weight:700># output
+</span><span style=font-weight:700></span>Max leaf nodes: 5     Mean Absolute Error:  347380
+Max leaf nodes: 50     Mean Absolute Error:  258171
+Max leaf nodes: 500     Mean Absolute Error:  243495
+Max leaf nodes: 5000     Mean Absolute Error:  254983
+</code></pre></td></tr></table>
+</div>
+</div><p>Of the options listed, 500 is the optimal number of leaves.</p>
+<h3 id=kesimpulan>Kesimpulan<a hidden class=anchor aria-hidden=true href=#kesimpulan>#</a></h3>
+<p>Here&rsquo;s the takeaway: Models can suffer from either:</p>
+<ul>
+<li><strong><em>Overfitting</em></strong> : capturing spurious patterns that won&rsquo;t recur in the future, leading to less accurate predictions,</li>
+<li><strong><em>Underfitting</em></strong> : failing to capture relevant patterns, again leading to less accurate predictions.</li>
+</ul>
+<p>We use validation data, which isn&rsquo;t used in model training, to measure a candidate model&rsquo;s accuracy. This lets us try many candidate models and keep the best one.</p>
+<h2 id=random-forests>Random Forests<a hidden class=anchor aria-hidden=true href=#random-forests>#</a></h2>
+<blockquote>
+<p>Using a more sophisticated machine learning algorithm.</p>
+</blockquote>
+<h3 id=introduction>Introduction<a hidden class=anchor aria-hidden=true href=#introduction>#</a></h3>
+<p>Decision trees leave you with a difficult decision. A deep tree with lots of leaves will overfit because each prediction is coming from historical data from only the few houses at its leaf. But a shallow tree with few leaves will perform poorly because it fails to capture as many distinctions in the raw data.</p>
+<p>Even today&rsquo;s most sophisticated modeling techniques face this tension between underfitting and overfitting. But, many models have clever ideas that can lead to better performance. We&rsquo;ll look at the <strong>random forest</strong> as an example.</p>
+<p>The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree. It generally has much better predictive accuracy than a single decision tree and it works well with default parameters. If you keep modeling, you can learn more models with even better performance, but many of those are sensitive to getting the right parameters.</p>
+<h3 id=example-random-forests>Example random forests<a hidden class=anchor aria-hidden=true href=#example-random-forests>#</a></h3>
+<p>prepare following variable</p>
+<ul>
+<li>train_X</li>
+<li>val_X</li>
+<li>train_y</li>
+<li>val_y</li>
+</ul>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#ff79c6>import</span> pandas <span style=color:#ff79c6>as</span> pd
+    
+<span style=color:#6272a4># Load data</span>
+melbourne_file_path <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#39;../input/melbourne-housing-snapshot/melb_data.csv&#39;</span>
+melbourne_data <span style=color:#ff79c6>=</span> pd<span style=color:#ff79c6>.</span>read_csv(melbourne_file_path) 
+<span style=color:#6272a4># Filter rows with missing values</span>
+melbourne_data <span style=color:#ff79c6>=</span> melbourne_data<span style=color:#ff79c6>.</span>dropna(axis<span style=color:#ff79c6>=</span><span style=color:#bd93f9>0</span>)
+<span style=color:#6272a4># Choose target and features</span>
+y <span style=color:#ff79c6>=</span> melbourne_data<span style=color:#ff79c6>.</span>Price
+melbourne_features <span style=color:#ff79c6>=</span> [<span style=color:#f1fa8c>&#39;Rooms&#39;</span>, <span style=color:#f1fa8c>&#39;Bathroom&#39;</span>, <span style=color:#f1fa8c>&#39;Landsize&#39;</span>, <span style=color:#f1fa8c>&#39;BuildingArea&#39;</span>, 
+                        <span style=color:#f1fa8c>&#39;YearBuilt&#39;</span>, <span style=color:#f1fa8c>&#39;Lattitude&#39;</span>, <span style=color:#f1fa8c>&#39;Longtitude&#39;</span>]
+X <span style=color:#ff79c6>=</span> melbourne_data[melbourne_features]
+
+<span style=color:#ff79c6>from</span> sklearn.model_selection <span style=color:#ff79c6>import</span> train_test_split
+
+<span style=color:#6272a4># split data into training and validation data, for both features and target</span>
+<span style=color:#6272a4># The split is based on a random number generator. Supplying a numeric value to</span>
+<span style=color:#6272a4># the random_state argument guarantees we get the same split every time we</span>
+<span style=color:#6272a4># run this script.</span>
+train_X, val_X, train_y, val_y <span style=color:#ff79c6>=</span> train_test_split(X, y,random_state <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>)
+
+</code></pre></td></tr></table>
+</div>
+</div><p>We build a random forest model similarly to how we built a decision tree in scikit-learn - this time using the <strong><code>RandomForestRegressor</code></strong> class instead of <strong><code>DecisionTreeRegressor</code></strong>.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#ff79c6>from</span> sklearn.ensemble <span style=color:#ff79c6>import</span> RandomForestRegressor
+<span style=color:#ff79c6>from</span> sklearn.metrics <span style=color:#ff79c6>import</span> mean_absolute_error
+
+forest_model <span style=color:#ff79c6>=</span> RandomForestRegressor(random_state<span style=color:#ff79c6>=</span><span style=color:#bd93f9>1</span>)
+forest_model<span style=color:#ff79c6>.</span>fit(train_X, train_y)
+melb_preds <span style=color:#ff79c6>=</span> forest_model<span style=color:#ff79c6>.</span>predict(val_X)
+<span style=color:#8be9fd;font-style:italic>print</span>(mean_absolute_error(val_y, melb_preds))
+</code></pre></td></tr></table>
+</div>
+</div>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://raisilham.com/tags/ml/>ML</a></li>
+<li><a href=https://raisilham.com/tags/python/>Python</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://raisilham.com/posts/twitterscraping/>
+<span class=title>« Prev</span>
+<br>
+<span>Twitter Scraping With Snscrape</span>
+</a>
+<a class=next href=https://raisilham.com/posts/day1/>
+<span class=title>Next »</span>
+<br>
+<span>Day 1 (30 Days Of ML)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2023 <a href=https://raisilham.com>Kusa Blog</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a> with some modification
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerHTML='copy';function d(){a.innerHTML='copied!',setTimeout(()=>{a.innerHTML='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
+</body>
+</html>
