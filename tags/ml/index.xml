@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ML on Kusa Blog</title>
-    <link>https://raisilham.com/tags/ml/</link>
+    <link>https://raisilhamn.github.io/blog/tags/ml/</link>
     <description>Recent content in ML on Kusa Blog</description>
     <image>
-      <url>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://raisilham.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raisilhamn.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Nov 2022 16:18:01 +0700</lastBuildDate><atom:link href="https://raisilham.com/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Nov 2022 16:18:01 +0700</lastBuildDate><atom:link href="https://raisilhamn.github.io/blog/tags/ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Day 3 (30 Days Of ML)</title>
-      <link>https://raisilham.com/posts/day3/</link>
+      <link>https://raisilhamn.github.io/blog/posts/day3/</link>
       <pubDate>Mon, 21 Nov 2022 16:18:01 +0700</pubDate>
       
-      <guid>https://raisilham.com/posts/day3/</guid>
+      <guid>https://raisilhamn.github.io/blog/posts/day3/</guid>
       <description>Note on ML</description>
     </item>
     
     <item>
       <title>Day 2 (30 Days Of ML)</title>
-      <link>https://raisilham.com/posts/day2/</link>
+      <link>https://raisilhamn.github.io/blog/posts/day2/</link>
       <pubDate>Sun, 20 Nov 2022 16:18:01 +0700</pubDate>
       
-      <guid>https://raisilham.com/posts/day2/</guid>
+      <guid>https://raisilhamn.github.io/blog/posts/day2/</guid>
       <description>Note on ML</description>
     </item>
     
     <item>
       <title>Day 1 (30 Days Of ML)</title>
-      <link>https://raisilham.com/posts/day1/</link>
+      <link>https://raisilhamn.github.io/blog/posts/day1/</link>
       <pubDate>Sat, 19 Nov 2022 16:11:01 +0700</pubDate>
       
-      <guid>https://raisilham.com/posts/day1/</guid>
+      <guid>https://raisilhamn.github.io/blog/posts/day1/</guid>
       <description>Note on ML</description>
     </item>
     
