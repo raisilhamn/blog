@@ -40,8 +40,6 @@ params:
   tocopen: false
   hideFooter: false
 
-
-
   assets:
     disableHLJS: false # to disable highlight.js
     disableFingerprinting: false
@@ -121,14 +119,14 @@ menu:
       url: https://github.com/raisilhamn
       weight: 30
       # params:
-        # external: true
+      # external: true
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 markup:
-    highlight:
-        # anchorLineNos: true
-        pygmentsUseClasses: true
-        codeFences: true
-        guessSyntax: true
-        lineNos: true
-        style: dracula
+  highlight:
+    # anchorLineNos: true
+    pygmentsUseClasses: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: dracula

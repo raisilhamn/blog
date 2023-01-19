@@ -61,10 +61,12 @@ tweets_df = pd.DataFrame(attributes_container, columns=[
 # save to csv format
 tweets_df.to_csv('10k_sambo.csv')
 ```
+
 - Enter your keyword in "Q"
 - Enter the date of the tweet in "since: " and "until: "
 - Filter with "-filter "
 - "10000" is number of twitter to scrape
 
 ### Result
+
 ![alt](https://i.imgur.com/EnCE4Sq.png#center)
