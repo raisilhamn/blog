@@ -1,7 +1,7 @@
 baseURL: "https://blog.raisilham.com"
 # baseURL: "https://raisilhamn.github.io/blog/"
 title: Kusa Blog
-paginate: 5
+paginate: 3
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -22,7 +22,7 @@ params:
   keywords: [Blog, Portfolio, rais ilham, rais]
   author: Me
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["https://avatars.githubusercontent.com/u/37736501?v=4"]
   DateFormat: "January 2, 2006"
   defaultTheme: dark #auto # dark, light
   disableThemeToggle: false
